@@ -1,0 +1,25 @@
+{
+  "name": "mood-journal",
+  "version": "1.0.0",
+  "description": "A place where you can anonymously vent",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haseeb-saeed/mood-journal.git"
+  },
+  "author": "Haseeb Saeed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haseeb-saeed/mood-journal/issues"
+  },
+  "homepage": "https://github.com/haseeb-saeed/mood-journal#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.5"
+  }
+}
