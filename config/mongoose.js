@@ -7,6 +7,7 @@ module.exports = function() {
     const db = mongoose.connect(config.db);
 
     // TODO: Require all models here
+    require('../app/models/user.server.model');
 
     return db;
 };
