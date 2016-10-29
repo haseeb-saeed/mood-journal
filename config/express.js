@@ -17,6 +17,7 @@ module.exports = function() {
     app.set('view engine', 'ejs');
 
     // TODO: Require routes here
+    require('../app/routes/index.server.routes')(app);
 
     app.use(express.static('./public'));
 
