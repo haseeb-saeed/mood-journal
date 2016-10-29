@@ -3,6 +3,10 @@
 const User = require('mongoose').model('User');
 
 exports.renderLogin = function(req, res) {
+    if (req.user) {
+        return res.redirect('/');
+    }
+
     res.render('login');
 };
 
@@ -12,6 +16,10 @@ exports.renderLogout = function(req, res) {
 };
 
 exports.renderRegister = function(req, res) {
+    if (req.user) {
+        return res.redirect('/');
+    }
+
     res.render('register');
 };
 
@@ -21,7 +29,7 @@ exports.isLoggedIn = function(req, res, next) {
     }
 
     // Redirect to login page if not logged in
-    res.redirect('/');
+    res.redirect('/login');
 };
 
 exports.register = function(req, res, next) {
