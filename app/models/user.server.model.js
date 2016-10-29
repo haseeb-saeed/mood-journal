@@ -5,17 +5,37 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    name: String,
-    email: String,
+    name: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+    },
     username: {
         type:String,
         trim: true,
         unique: true,
+        required: true,
     },
-    password: String,
+    password: {
+        type: String,
+        required: true,
+    },
+    created_at: {
+        type: Date,
+        default: Date.now,
+    },
+    updated_at: {
+        type: Date,
+        default: Date.now,
+    },
 });
 
 UserSchema.pre('save', function(next) {
+    this.updated_at = Date.now;
+
     if (this.password) {
         this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8), null);
     }
