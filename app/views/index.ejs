@@ -5,6 +5,15 @@
 </head>
 
 <body>
-    Welcome to Mood Journal!
+    <p>Welcome to Mood Journal!</p>
+    <br>
+
+    <% if (!user) { %>
+        <a href="/login">Login</a>
+        <br>
+        <a href="/register">Register</a>
+    <% } else { %>
+        <a href="/logout">Logout</a>
+    <% } %>
 </body>
 </html>

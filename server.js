@@ -9,5 +9,7 @@ const express = require('./config/express');
 const db = mongoose();
 const app = express();
 
+const passport = require('./config/passport')();
+
 app.listen(config.port);
 console.log(process.env.NODE_ENV + ' server running at http://localhost:' + config.port);
