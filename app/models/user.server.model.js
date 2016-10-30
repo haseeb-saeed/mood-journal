@@ -51,4 +51,16 @@ UserSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 }
 
+UserSchema.methods.toJSON = function() {
+    const user = this.toObject();
+
+    // Only username should be known
+    // TODO: Should bookmarks be removed?
+    delete user.name;
+    delete user.email;
+    delete user.password;
+
+    return user;
+}
+
 mongoose.model('User', UserSchema);

@@ -34,7 +34,6 @@ exports.read = function(req, res) {
     res.json(req.post);
 };
 
-
 exports.update = function(req, res, next) {
     // TODO: Probably want to sanitize the request's body
     Post.findByIdAndUpdate(req.post.id, req.body, function(err, post) {
@@ -68,4 +67,12 @@ exports.getPostById = function(req, res, next, id) {
             next();
         }
     });
+};
+
+exports.upvote = function(req, res, next) {
+
+};
+
+exports.bookmark = function(req, res, next) {
+
 };

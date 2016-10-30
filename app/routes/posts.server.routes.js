@@ -19,5 +19,11 @@ module.exports = function(app) {
     app.route('/posts/new')
         .get(posts.new);
 
+    app.route('/post/:postId/upvote')
+      .post(posts.upvote)
+
+    app.route('/post/:postId/bookmark')
+      .post(posts.bookmark)
+
     app.param('postId', posts.getPostById);
 };
