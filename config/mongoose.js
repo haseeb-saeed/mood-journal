@@ -8,6 +8,7 @@ module.exports = function() {
 
     // TODO: Require all models here
     require('../app/models/user.server.model');
+    require('../app/models/post.server.model');
 
     return db;
 };
