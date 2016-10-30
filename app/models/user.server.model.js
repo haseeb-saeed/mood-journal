@@ -14,7 +14,7 @@ const UserSchema = new Schema({
         required: true,
     },
     username: {
-        type:String,
+        type: String,
         trim: true,
         unique: true,
         required: true,
@@ -31,6 +31,10 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now,
     },
+    bookmarks: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Post',
+    }],
 });
 
 UserSchema.pre('save', function(next) {

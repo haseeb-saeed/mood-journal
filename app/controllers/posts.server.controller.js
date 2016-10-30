@@ -20,7 +20,7 @@ exports.create = function(req, res) {
 
     post.save(function(err) {
         if (err) {
-            console.log("Shit, listing posts gave me an error");
+            console.log("Shit, creating a post gave me an error");
             return;
         }
 
@@ -33,9 +33,43 @@ exports.new = function(req, res) {
 };
 
 exports.read = function(req, res) {
+    res.json(req.post);
+};
 
+
+exports.update = function(req, res) {
+    // TODO: Probably want to sanitize the request's body
+    Post.findByIdAndUpdate(req.post.id, req.body, function(err, post) {
+        if (err) {
+            console.log("Shit, updating a post gave me an error");
+            return;
+        }
+
+        res.json(req.post);
+    });
 };
 
 exports.delete = function(req, res) {
+    req.post.remove(function(err, post) {
+        if (err) {
+            console.log("Shit, deleting a post gave me an error");
+            return;
+        }
 
+        res.json(post);
+    });
+};
+
+exports.getPostById = function(req, res, next, id) {
+    Post.findOne({
+        _id: id,
+        author: req.user.id,
+    }, function(err, post) {
+        if (err) {
+            next(err);
+        } else {
+            req.post = post;
+            next();
+        }
+    });
 };

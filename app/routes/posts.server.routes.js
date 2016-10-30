@@ -11,6 +11,13 @@ module.exports = function(app) {
         .get(posts.list)
         .post(posts.create);
 
+    app.route('/post/:postId')
+        .get(posts.read)
+        .put(posts.update)
+        .delete(posts.delete);
+
     app.route('/posts/new')
         .get(posts.new);
+
+    app.param('postId', posts.getPostById);
 };
