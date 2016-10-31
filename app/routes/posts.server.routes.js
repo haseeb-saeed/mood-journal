@@ -19,11 +19,17 @@ module.exports = function(app) {
     app.route('/posts/new')
         .get(posts.new);
 
-    app.route('/posts/:postId/upvote')
-      .post(posts.upvote)
+    app.route('/posts/:postId/upvotes')
+        .post(posts.upvote);
 
-    app.route('/posts/:postId/bookmark')
-      .post(posts.bookmark)
+    app.route('/posts/bookmarks')
+        .get(posts.listBookmarked);
+
+    app.route('/posts/:postId/bookmarks')
+        .post(posts.bookmark);
+
+    app.route('/posts/random')
+        .get(posts.random);
 
     app.param('postId', posts.getPostById);
 };

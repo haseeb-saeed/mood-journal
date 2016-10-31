@@ -31,10 +31,6 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now,
     },
-    bookmarks: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Post',
-    }],
 });
 
 UserSchema.pre('save', function(next) {
@@ -55,7 +51,6 @@ UserSchema.methods.toJSON = function() {
     const user = this.toObject();
 
     // Only username should be known
-    // TODO: Should bookmarks be removed?
     delete user.name;
     delete user.email;
     delete user.password;

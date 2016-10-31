@@ -36,12 +36,12 @@ exports.read = function(req, res) {
 
 exports.update = function(req, res, next) {
     // TODO: Probably want to sanitize the request's body
-    Post.findByIdAndUpdate(req.post.id, req.body, function(err, post) {
+    Post.findByIdAndUpdate(req.post.id, req.body, { new: true }, function(err, post) {
         if (err) {
             return next(err);
         }
 
-        res.json(req.post);
+        res.json(post);
     });
 };
 
@@ -70,9 +70,54 @@ exports.getPostById = function(req, res, next, id) {
 };
 
 exports.upvote = function(req, res, next) {
+    const callback = function(err, post) {
+        if (err) {
+            return next(err);
+        }
 
+        res.json(post);
+    }
+
+    if (req.post.userHasUpvoted(req.user)) {
+        Post.findByIdAndUpdate(req.post.id, { $pull: { upvotes: req.user.id }}, { new: true }, callback);
+    } else {
+        Post.findByIdAndUpdate(req.post.id, { $push: { upvotes: req.user.id }}, { new: true }, callback);
+    }
 };
 
 exports.bookmark = function(req, res, next) {
+    const callback = function(err, post) {
+        if (err) {
+            return next(err);
+        }
 
+        res.json(req.post);
+    }
+
+    if (req.post.userHasBookmarked(req.user)) {
+        Post.findByIdAndUpdate(req.post.id, { $pull: { bookmarks: req.user.id }}, { new: true }, callback);
+    } else {
+        Post.findByIdAndUpdate(req.post.id, { $push: { bookmarks: req.user.id }}, { new: true }, callback);
+    }
+};
+
+exports.listBookmarked = function(req, res, next) {
+    Post.find({ bookmarks: req.user.id })
+        .exec(function(err, posts) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json(posts);
+        });
+};
+
+exports.random = function(req, res, next) {
+    Post.random(function(err, post) {
+        if (err) {
+            return next(err);
+        }
+
+        res.json(posts);
+    });
 };
