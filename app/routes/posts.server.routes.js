@@ -11,7 +11,7 @@ module.exports = function(app) {
         .get(posts.list)
         .post(posts.create);
 
-    app.route('/post/:postId')
+    app.route('/posts/:postId')
         .get(posts.read)
         .put(posts.update)
         .delete(posts.delete);
@@ -19,10 +19,10 @@ module.exports = function(app) {
     app.route('/posts/new')
         .get(posts.new);
 
-    app.route('/post/:postId/upvote')
+    app.route('/posts/:postId/upvote')
       .post(posts.upvote)
 
-    app.route('/post/:postId/bookmark')
+    app.route('/posts/:postId/bookmark')
       .post(posts.bookmark)
 
     app.param('postId', posts.getPostById);
