@@ -31,7 +31,9 @@ exports.new = function(req, res) {
 };
 
 exports.read = function(req, res) {
-    res.json(req.post);
+    res.render('post', {
+        post: req.post,
+    });
 };
 
 exports.update = function(req, res, next) {

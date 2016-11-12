@@ -11,25 +11,25 @@ module.exports = function(app) {
         .get(posts.list)
         .post(posts.create);
 
+    app.route('/posts/new')
+        .get(posts.new);
+
+    app.route('/posts/bookmarks')
+        .get(posts.listBookmarked);
+
+    app.route('/posts/random')
+        .get(posts.random);
+
     app.route('/posts/:postId')
         .get(posts.read)
         .put(posts.update)
         .delete(posts.delete);
 
-    app.route('/posts/new')
-        .get(posts.new);
-
     app.route('/posts/:postId/upvotes')
         .post(posts.upvote);
 
-    app.route('/posts/bookmarks')
-        .get(posts.listBookmarked);
-
     app.route('/posts/:postId/bookmarks')
         .post(posts.bookmark);
-
-    app.route('/posts/random')
-        .get(posts.random);
 
     app.param('postId', posts.getPostById);
 };
