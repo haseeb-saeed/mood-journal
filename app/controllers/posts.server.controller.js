@@ -4,12 +4,15 @@ const Post = require('mongoose').model('Post');
 
 exports.list = function(req, res, next) {
     Post.find({ author: req.user.id })
+        .sort('-created_at')
         .exec(function(err, posts) {
             if (err) {
                 return next(err);
             }
 
-            res.json(posts);
+            res.render('posts', {
+                posts: posts,
+            });
         });
 };
 
@@ -22,7 +25,7 @@ exports.create = function(req, res, next) {
             return next(err);
         }
 
-        res.json(post);
+        res.redirect('/posts');
     });
 };
 
@@ -53,7 +56,7 @@ exports.delete = function(req, res, next) {
             return next(err);
         }
 
-        res.json(post);
+        res.redirect('/posts');
     });
 };
 
