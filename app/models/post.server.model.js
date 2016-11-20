@@ -29,29 +29,39 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     }],
+    upvoted: {
+        type: Boolean,
+        default: false,
+    },
     bookmarks: [{
         type: Schema.Types.ObjectId,
         ref: 'User',
     }],
+    bookmarked: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 PostSchema.methods.userHasUpvoted = function(user) {
     return this.upvotes.some(function(id) {
-        return id === user.id;
+        return id.equals(user._id);
     });
 }
 
 PostSchema.methods.userHasBookmarked = function(user) {
     return this.bookmarks.some(function(id) {
-        return id === user.id;
+        return id.equals(user._id);
     });
 }
 
 PostSchema.methods.toJSON = function() {
     const post = this.toObject();
 
-    // Posts are anonymous
-    delete post.author;
+    post.numUpvotes = this.upvotes.length;
+    delete post.upvotes;
+    delete post.bookmarks;
+
     return post;
 }
 

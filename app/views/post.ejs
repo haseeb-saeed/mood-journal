@@ -5,6 +5,18 @@
 </head>
 
 <body>
-    <% include partials/_post %>
+    <h2><%= post.title %></h2>
+    <p><%= post.body %></p>
+
+    <% if (user._id.equals(post.author)) { %>
+        <form action='/posts/<%= post.id %>' method="post">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <button type="submit">Delete</button>
+        </form>
+
+        <form action='/posts/<%= post.id %>/bookmark' method="post">
+            <button type="submit">Favourite</button>
+        </form>
+    <% } %>
 </body>
 </html>

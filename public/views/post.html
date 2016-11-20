@@ -1,0 +1,9 @@
+<div>
+    <h1>{{post.title}}</h1>
+    <p>{{post.body}}</p>
+    <button ng-click="addUpvote()" ng-show="!isUpvoted()">Add Upvote</button>
+    <button ng-click="removeUpvote()" ng-show="isUpvoted()">Remove Upvote</button>
+    <button ng-click="addBookmark()" ng-show="!isBookmarked()">Add Bookmark</button>
+    <button ng-click="removeBookmark()" ng-show="isBookmarked()">Remove Bookmark</button>
+    <button ng-click="deletePost()" ng-if="belongsToCurrentUser(post)">Delete</button>
+</div>

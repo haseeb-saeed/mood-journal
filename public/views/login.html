@@ -1,0 +1,20 @@
+<div>
+    <p>Login to Mood Journal!</p>
+    <br>
+
+    <form>
+        <label>Username</label>
+        <input type="text" ng-model="user.username">
+        <br>
+
+        <label>Password</label>
+        <input type="pasword" ng-model="user.password">
+        <br>
+
+        <button type="submit" ng-click="login(user)">Login</button>
+    </form>
+
+    <br>
+    <span>Don't have an account?</span>
+    <a ng-href="/#/register">Register</a>
+</div>

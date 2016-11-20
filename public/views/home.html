@@ -1,0 +1,22 @@
+<div>
+    <div>
+        <h1>{{test}}</h1>
+    </div>
+    <div ng-repeat="post in posts">
+        <p>{{post.title}}</p>
+        <p>{{post.body}}</p>
+        <a ng-href="/#/posts/{{post._id}}">View</a>
+        <br>
+        <br>
+    </div>
+    <br>
+    <div>
+        <form ng-submit="createPost()">
+            <label>Title</label>
+            <input type = "text" ng-model="post.title"></input>
+            <label>Body</label>
+            <input type = "text" ng-model="post.body"></input>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+</div>

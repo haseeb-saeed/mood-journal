@@ -2,34 +2,31 @@
 
 const posts = require('../controllers/posts.server.controller');
 const users = require('../controllers/users.server.controller');
+const expressJwt = require('express-jwt');
 
 module.exports = function(app) {
-    app.route('/posts/*')
-        .all(users.isLoggedIn);
-
-    app.route('/posts')
+    app.route('/api/posts')
+        .all(expressJwt({secret: 'secret'}))
         .get(posts.list)
-        .post(posts.create);
+        .post(posts.create)
+        .all(posts.read);
 
-    app.route('/posts/new')
-        .get(posts.new);
+    app.route('/api/posts/:postId')
+        .all(expressJwt({secret: 'secret'}))
+        .delete(posts.delete)
+        .all(posts.read);
 
-    app.route('/posts/bookmarks')
-        .get(posts.listBookmarked);
+    app.route('/api/posts/:postId/upvote')
+        .all(expressJwt({secret: 'secret'}))
+        .post(posts.addUpvote)
+        .delete(posts.removeUpvote)
+        .all(posts.read);
 
-    app.route('/posts/random')
-        .get(posts.random);
-
-    app.route('/posts/:postId')
-        .get(posts.read)
-        .put(posts.update)
-        .delete(posts.delete);
-
-    app.route('/posts/:postId/upvotes')
-        .post(posts.upvote);
-
-    app.route('/posts/:postId/bookmarks')
-        .post(posts.bookmark);
+    app.route('/api/posts/:postId/bookmark')
+        .all(expressJwt({secret: 'secret'}))
+        .post(posts.addBookmark)
+        .delete(posts.removeBookmark)
+        .all(posts.read);
 
     app.param('postId', posts.getPostById);
 };
