@@ -5,9 +5,10 @@
         <meta charset="utf-8">
         <title>Mood Journal</title>
         <link href="stylesheets/bootstrap.css" rel="stylesheet">
+        <link href="stylesheets/style.css" rel="stylesheet">
     </head>
     <body ng-app="moodJournal">
-        <div class="navbar navbar-default" role="navigation" bs-navbar>
+        <div class="navbar navbar-default" role="navigation" ng-controller="NavbarCtrl" bs-navbar>
             <div class="navbar-header">
                 <a class="navbar-brand" href="/#/">
                     <span>Mood Journal</span>
@@ -15,12 +16,13 @@
             </div>
             <ul class="nav navbar-nav">
                 <li data-match-route="/$"><a href="/#/">Home</a></li>
+                <li data-match-route="/about"><a href="/#/about">About</a></li>
             </ul>
-            <ul class="nav navbar-nav pull-right">
+            <ul class="nav navbar-nav pull-right" ng-show="!isLoggedIn()">
                 <li data-match-route="/login"><a href="/#/login">Login</a></li>
                 <li data-match-route="/register"><a href="/#/register">Register</a></li>
             </ul>
-            <ul class="nav navbar-nav pull-right">
+            <ul class="nav navbar-nav pull-right" ng-show="isLoggedIn()">
                 <li data-match-route="/logout"><a href="/#/">Logout</a></li>
             </ul>
         </div>
@@ -28,10 +30,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-2">
-                    <p>Herp</p>
+                    <div class="sidebar">
+                    <p>Recent</p>
+                    <p>My Posts</p>
+                    <p>Favourite</p>
+                    <p>New Post</p>
+                    <p>Random</p>
+                    </div>
                 </div>
                 <div class="col-sm-10">
-                    <p>Derp</p>
                     <div ng-view></div>
                 </div>
             </div>
@@ -51,6 +58,7 @@
 
         <!-- Controllers -->
         <script src="controllers/main.js"></script>
+        <script src="controllers/navbar.js"></script>
         <script src="controllers/login.js"></script>
         <script src="controllers/register.js"></script>
         <script src="controllers/post.js"></script>

@@ -2,7 +2,7 @@
 
 angular.module('moodJournal').controller('MainCtrl',
     ['$scope', 'Posts', 'Auth', function($scope, Posts, Auth) {
-        $scope.test = 'Hello world!';
+        $scope.test = 'New posts';
         $scope.posts = Posts.query(function(data) {
             console.log('Success getting posts');
             console.log(data);
