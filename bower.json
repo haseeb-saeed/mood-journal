@@ -1,0 +1,27 @@
+{
+  "name": "mood-journal",
+  "description": "A place where you can anonymously vent",
+  "main": "server.js",
+  "authors": [
+    "Haseeb Saeed"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/haseeb-saeed/mood-journal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-cookies": "^1.5.8",
+    "angular-resource": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "angular-ui-router": "^0.3.2",
+    "angular": "^1.5.8",
+    "angular-strap": "^2.3.10",
+    "angular-animate": "^1.5.9"
+  }
+}

@@ -1,6 +1,6 @@
 'use strict';
 
-const app = angular.module('moodJournal', ['ngResource', 'ngRoute', 'ngCookies']);
+const app = angular.module('moodJournal', ['ngResource', 'ngRoute', 'ngCookies', 'ngAnimate', 'mgcrea.ngStrap']);
 
 app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
     $routeProvider
