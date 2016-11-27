@@ -1,27 +1,29 @@
 'use strict';
 
-const app = angular.module('moodJournal', ['ngResource', 'ngRoute', 'ngCookies', 'ngAnimate', 'mgcrea.ngStrap']);
+const app = angular.module('moodJournal', ['ngResource', 'ui.router', 'ngCookies', 'ngAnimate', 'mgcrea.ngStrap']);
 
-app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
-    $routeProvider
-        .when('/', {
+app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider) {
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+        .state('home', {
+            url: '/',
             templateUrl: 'views/home.html',
             controller: 'MainCtrl',
         })
-        .when('/login', {
+        .state('login', {
+            url: '/login',
             templateUrl: 'views/login.html',
             controller: 'LoginCtrl',
         })
-        .when('/register', {
+        .state('register', {
+            url: '/register',
             templateUrl: 'views/register.html',
             controller: 'RegisterCtrl',
         })
-        .when('/posts/:id', {
+        .state('post', {
+            url:'/posts/:id',
             templateUrl: 'views/post.html',
             controller: 'PostCtrl',
-        })
-        .otherwise({
-            redirectTo: '/',
         });
 
     $httpProvider.interceptors.push('AuthInterceptor');

@@ -27,31 +27,16 @@
             </ul>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="sidebar">
-                    <p>Recent</p>
-                    <p>My Posts</p>
-                    <p>Favourite</p>
-                    <p>New Post</p>
-                    <p>Random</p>
-                    </div>
-                </div>
-                <div class="col-sm-10">
-                    <div ng-view></div>
-                </div>
-            </div>
-        </div>
+        <div ui-view></div>
 
         <!-- Angular files -->
         <script src="lib/angular/angular.min.js"></script>
         <script src="lib/angular-resource/angular-resource.min.js"></script>
-        <script src="lib/angular-route/angular-route.min.js"></script>
         <script src="lib/angular-cookies/angular-cookies.min.js"></script>
         <script src="lib/angular-animate/angular-animate.min.js"></script>
         <script src="lib/angular-strap/dist/angular-strap.min.js"></script>
         <script src="lib/angular-strap/dist/angular-strap.tpl.js"></script>
+        <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
 
         <!-- Module -->
         <script src="app.js"></script>

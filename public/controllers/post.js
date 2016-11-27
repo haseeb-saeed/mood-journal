@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('moodJournal').controller('PostCtrl',
-    ['$scope', '$routeParams', '$location', 'Posts', 'Auth',
-        function($scope, $routeParams, $location, Posts, Auth) {
-            console.log($routeParams.id)
-            $scope.post = Posts.get({ id: $routeParams.id }, function(data) {
+    ['$scope', '$stateParams', '$location', 'Posts', 'Auth',
+        function($scope, $stateParams, $location, Posts, Auth) {
+            $scope.post = Posts.get({ id: $stateParams.id }, function(data) {
                 console.log('Success getting post');
                 console.log(data);
             }, function(error) {
