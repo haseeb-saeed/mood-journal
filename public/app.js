@@ -24,6 +24,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($s
             url:'/posts/:id',
             templateUrl: 'views/post.html',
             controller: 'PostCtrl',
+        })
+        .state('about', {
+            url:'/about',
+            templateUrl: 'views/about.html',
+            controller: 'AboutCtrl',
         });
 
     $httpProvider.interceptors.push('AuthInterceptor');

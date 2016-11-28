@@ -3,8 +3,7 @@
 angular.module('moodJournal').controller('MainCtrl',
     ['$scope', 'Posts', 'Auth', function($scope, Posts, Auth) {
         $scope.test = 'New posts';
-        console.log($scope.query);
-
+        $scope.filterType = '';
 
         $scope.posts = Posts.query(function(data) {
             console.log('Success getting posts');
@@ -28,14 +27,20 @@ angular.module('moodJournal').controller('MainCtrl',
         };
 
         $scope.filterAllPosts = function() {
+            this.filterType = '';
+            this.test = 'All the posts';
             console.log('Filtering all posts');
         };
 
         $scope.filterUserPosts = function() {
+            this.filterType = 'AUTHOR';
+            this.test = 'Just your posts';
             console.log('Filtering user posts');
         };
 
         $scope.filterBookmarkedPosts = function() {
+            this.filterType = 'BOOKMARK';
+            this.test = 'Just your bookmarked posts';
             console.log('Filtering bookmarked posts');
         };
     }]
