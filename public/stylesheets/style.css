@@ -1,6 +1,59 @@
-.sidebar {
-    margin-top: 90px;
-    border-right: 1px solid black;
-    padding-right: 15px;
+body {
+    background: #e4e7ec;
+}
+
+.bs-sidebar {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-right: 1px solid gray;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.bs-sidebar .nav > li > a {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: hsl(0, 0%, 60%);
+    padding: 4px 15px;
     text-align: right;
+}
+
+.bs-sidebar .nav > li > a:hover,
+.bs-sidebar .nav > li > a:focus {
+    color: gray;
+    text-decoration: none;
+    background-color: transparent;
+    border-right: 1px solid gray;
+}
+
+.bs-sidebar .nav > .active > a,
+.bs-sidebar .nav > .active:hover > a,
+.bs-sidebar .nav > .active:focus > a {
+    padding-right: 20px - 1px;
+    color: red;
+    text-decoration: none;
+    background-color: transparent;
+    border-right: 2px solid gray;
+}
+
+
+.home-sidebar {
+    /* background: white; */
+    text-align: right;
+    margin-top: 50px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-right: 1px solid gray;
+}
+.derp {
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
 }

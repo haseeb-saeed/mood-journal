@@ -1,27 +1,52 @@
-<div class="col-sm-offset-1 col-sm-6">
-    <h1 class="text-center">{{test}}</h1>
-    <br/>
-    <div ng-repeat="post in posts">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    {{post.title}}
-                </h3>
-            </div>
-            <div class="panel-body">
-                <p>{{post.body}}</p>
-                <a ng-href="/#/posts/{{post._id}}">View</a>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="bs-sidebar hidden-print" role="complementary" bs-affix>
+                <ul class="nav bs-sidenav">
+                    <li>
+                        <div class="input-group">
+                            <input class="form-control" ng-model="query.title" placeholder="search">
+                        </div>
+                    </li>
+                    <br/>
+                    <li><a href="javascript:void(0)">Recent</a></li>
+                    <li><a href="javascript:void(0)">My Posts</a></li>
+                    <li><a href="javascript:void(0)">Favourites</a></li>
+                    <br>
+                    <li><a href="javascript:void(0)">New post</a></li>
+                </ul>
             </div>
         </div>
-    </div>
-    <br/>
-    <div>
-        <form ng-submit="createPost()">
-            <label>Title</label>
-            <input type = "text" ng-model="post.title"></input>
-            <label>Body</label>
-            <input type = "text" ng-model="post.body"></input>
-            <button type="submit">Post</button>
-        </form>
+        <div class="col-sm-8">
+            <div class="derp">
+                <div>
+                    <h1 class="text-center">{{test}}</h1>
+                    <br/>
+                    <div ng-repeat="post in posts | filter:query">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    {{post.title}}
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>{{post.body}}</p>
+                                <a ng-href="/#/posts/{{post._id}}">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div>
+                        <form ng-submit="createPost()">
+                            <label>Title</label>
+                            <input type = "text" ng-model="post.title"></input>
+                            <label>Body</label>
+                            <input type = "text" ng-model="post.body"></input>
+                            <button type="submit">Post</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

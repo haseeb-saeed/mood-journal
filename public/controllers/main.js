@@ -3,6 +3,9 @@
 angular.module('moodJournal').controller('MainCtrl',
     ['$scope', 'Posts', 'Auth', function($scope, Posts, Auth) {
         $scope.test = 'New posts';
+        console.log($scope.query);
+
+
         $scope.posts = Posts.query(function(data) {
             console.log('Success getting posts');
             console.log(data);
@@ -22,6 +25,18 @@ angular.module('moodJournal').controller('MainCtrl',
                 console.log('Error creating post');
                 console.log(error);
             });
+        };
+
+        $scope.filterAllPosts = function() {
+            console.log('Filtering all posts');
+        };
+
+        $scope.filterUserPosts = function() {
+            console.log('Filtering user posts');
+        };
+
+        $scope.filterBookmarkedPosts = function() {
+            console.log('Filtering bookmarked posts');
         };
     }]
 );
